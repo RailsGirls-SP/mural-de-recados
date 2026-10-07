@@ -10,5 +10,7 @@
   <div>
     <p><%= message.content %></p>
     <p>— <%= message.author %></p>
+    <%= link_to "Editar", edit_message_path(message) %>
+    <%= button_to "Apagar", message, method: :delete, form: { data: { turbo_confirm: "Quer mesmo apagar este recado?" } } %>
   </div>
 <% end %>
