@@ -1,5 +1,7 @@
 <h1>Mural de recados</h1>
 
+<%= link_to "Novo recado", new_message_path %>
+
 <% if @messages.empty? %>
   <p>Ainda não tem nenhum recado. Que tal postar o primeiro?</p>
 <% end %>
