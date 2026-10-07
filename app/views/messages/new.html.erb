@@ -2,17 +2,7 @@
   <div class="container">
     <h1 class="title">Novo recado</h1>
 
-    <%= form_with model: @message, class: "box" do |form| %>
-      <div class="field">
-        <%= form.label :author, "Seu nome", class: "label" %>
-        <%= form.text_field :author, class: "input" %>
-      </div>
-      <div class="field">
-        <%= form.label :content, "Recado", class: "label" %>
-        <%= form.text_area :content, class: "textarea" %>
-      </div>
-      <%= form.submit "Postar recado", class: "button is-primary" %>
-    <% end %>
+    <%= render "form", message: @message, submit_text: "Postar recado" %>
 
     <%= link_to "Voltar", root_path %>
   </div>

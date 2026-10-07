@@ -8,8 +8,13 @@ class MessagesController < ApplicationController
   end
 
   def create
-    Message.create(message_params)
-    redirect_to root_path
+    @message = Message.new(message_params)
+
+    if @message.save
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -18,8 +23,12 @@ class MessagesController < ApplicationController
 
   def update
     @message = Message.find(params[:id])
-    @message.update(message_params)
-    redirect_to root_path
+
+    if @message.update(message_params)
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
