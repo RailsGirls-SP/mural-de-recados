@@ -1,0 +1,15 @@
+<section class="section">
+  <div class="container">
+    <h1 class="title">Entrar como admin</h1>
+
+    <%= form_with url: admin_path, class: "box" do |form| %>
+      <div class="field">
+        <%= form.label :password, "Senha", class: "label" %>
+        <%= form.password_field :password, class: "input", autofocus: true %>
+      </div>
+      <%= form.submit "Entrar", class: "button is-primary" %>
+    <% end %>
+
+    <%= link_to "Voltar", root_path %>
+  </div>
+</section>

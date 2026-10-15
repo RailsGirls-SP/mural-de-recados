@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :require_edit_permission, except: :index
+
   def index
     @messages = Message.order(created_at: :desc)
   end
@@ -38,6 +40,10 @@ class MessagesController < ApplicationController
   end
 
   private
+
+  def require_edit_permission
+    redirect_to root_path, alert: "O mural está fechado para novos recados." unless can_edit?
+  end
 
   def message_params
     params.expect(message: [ :author, :content ])

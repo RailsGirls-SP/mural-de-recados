@@ -7,4 +7,16 @@ class ApplicationController < ActionController::Base
 
   # Changes to the importmap will invalidate the etag for HTML responses
   stale_when_importmap_changes
+
+  helper_method :admin?, :can_edit?
+
+  private
+
+  def admin?
+    ENV["ADMIN_PASSWORD"].present? && session[:admin] == true
+  end
+
+  def can_edit?
+    ENV["READ_ONLY"].blank? || admin?
+  end
 end

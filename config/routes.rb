@@ -14,5 +14,9 @@ Rails.application.routes.draw do
 
   resources :messages, only: [ :index, :new, :create, :edit, :update, :destroy ]
 
+  get    "admin" => "sessions#new"
+  post   "admin" => "sessions#create"
+  delete "admin" => "sessions#destroy"
+
   root "messages#index"
 end
