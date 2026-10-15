@@ -20,8 +20,8 @@
         <div class="column is-one-quarter">
           <div class="card has-background-warning-light">
             <div class="card-content">
-              <p><%= message.content %></p>
-              <p class="is-italic">— <%= message.author %></p>
+              <%= message_content(message.content) %>
+              <p class="is-italic mt-3">— <%= message.author %></p>
               <% if can_edit? %>
                 <div class="buttons mt-4">
                   <%= link_to "Editar", edit_message_path(message), class: "button is-small" %>
